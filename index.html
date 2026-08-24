@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Signalroom turns social posts into clearer, more engaging content." />
+    <title>Signalroom | Content analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="responsive.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="Signalroom home"><span class="brand-mark">S</span><span>signalroom</span></a>
+        <div class="workspace-switcher"><span class="avatar small">AM</span><span><b>Acme Studio</b><small>Personal workspace</small></span><span class="chevron">⌄</span></div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a class="nav-item active" href="#analyze"><span class="nav-icon">✦</span>Analyze<span class="nav-count">3</span></a>
+          <a class="nav-item" href="#library"><span class="nav-icon">▤</span>Library</a>
+          <a class="nav-item" href="#templates"><span class="nav-icon">▧</span>Templates</a>
+        </nav>
+        <div class="sidebar-footer"><a class="nav-item" href="#settings"><span class="nav-icon">⚙</span>Settings</a><div class="profile"><span class="avatar">AM</span><span><b>Alex Morgan</b><small>Free plan</small></span><span class="more">•••</span></div></div>
+      </aside>
+
+      <main class="main-content" id="analyze">
+        <header class="topbar"><div class="breadcrumbs"><span>Workspace</span><i>/</i><strong>Analyze content</strong></div><div class="top-actions"><button class="icon-button" aria-label="Notifications">♧<span class="notification-dot"></span></button><button class="help-button">? <span>Help center</span></button></div></header>
+        <section class="page-heading"><div><p class="eyebrow">CONTENT INTELLIGENCE <span></span></p><h1>Make every post <em>matter.</em></h1><p class="subtitle">Upload a draft, caption, or visual. Signalroom finds the small shifts that turn attention into action.</p></div><div class="heading-meta"><span class="status-dot"></span>Analysis engine online</div></section>
+
+        <section class="analysis-grid">
+          <div class="upload-column">
+            <div class="section-label"><span>01</span><h2>Bring in your content</h2></div>
+            <div class="drop-zone" id="dropZone" tabindex="0" role="button" aria-label="Upload a PDF or image">
+              <input id="fileInput" type="file" accept=".pdf,image/*" hidden />
+              <div class="upload-visual"><div class="upload-ring"><span>↑</span></div><div class="upload-spark spark-one">+</div><div class="upload-spark spark-two">·</div></div>
+              <h3>Drop a file to start</h3><p>PDF, PNG, JPG, or WEBP <span>·</span> Max 10 MB</p><button class="browse-button" type="button" id="browseButton">Browse files <span>↗</span></button><small class="privacy-note">⌁ Your files stay private and are deleted after analysis.</small>
+            </div>
+            <div class="recent-header"><h3>Recent analyses</h3><button class="text-button" id="clearRecent">Clear all</button></div>
+            <div class="recent-list" id="recentList">
+              <article class="recent-item"><span class="file-icon pdf">PDF</span><div><b>launch-caption-v3.pdf</b><small>Analyzed 12 min ago · 84 score</small></div><span class="item-arrow">→</span></article>
+              <article class="recent-item"><span class="file-icon image">IMG</span><div><b>summer-campaign.jpg</b><small>Analyzed yesterday · 72 score</small></div><span class="item-arrow">→</span></article>
+            </div>
+          </div>
+
+          <div class="results-column">
+            <div class="section-label"><span>02</span><h2>See what stands out</h2><span class="demo-badge">DEMO INSIGHT</span></div>
+            <div class="result-panel" id="resultPanel">
+              <div class="result-top"><div><span class="analysis-type" id="analysisType">PDF · TEXT EXTRACTED</span><h3 id="resultTitle">Launch caption v3</h3></div><button class="more-button" aria-label="More options">•••</button></div>
+              <div class="score-row"><div class="score-ring"><strong id="scoreValue">84</strong><span>/100</span></div><div class="score-copy"><b>Strong foundation</b><p>Your voice is clear and the hook lands. A sharper close could help more people take the next step.</p></div></div>
+              <div class="metric-grid"><div class="metric"><span>HOOK</span><b>92</b><div class="metric-bar"><i style="width:92%"></i></div></div><div class="metric"><span>CLARITY</span><b>88</b><div class="metric-bar"><i style="width:88%"></i></div></div><div class="metric"><span>CTA</span><b>61</b><div class="metric-bar warm"><i style="width:61%"></i></div></div></div>
+              <div class="extracted-block"><div class="block-heading"><span>EXTRACTED TEXT</span><button class="copy-button" id="copyText">Copy text</button></div><p id="extractedText">We spent six months building the thing we wished existed. Today, Signalroom is live. Less guessing, more knowing. Tell us what you think ↓</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="recommendations-section"><div class="section-label"><span>03</span><h2>High-impact improvements</h2><span class="recommendation-count">3 recommendations</span></div><div class="recommendation-grid"><article class="recommendation"><div class="rec-head"><span class="rec-number">01</span><span class="priority">QUICK WIN</span></div><h3>Make the next step specific</h3><p>“Tell us what you think” is warm, but open-ended. Ask readers to share one thing they would use first.</p><button class="apply-button" data-action="Applied">Apply suggestion <span>→</span></button></article><article class="recommendation"><div class="rec-head"><span class="rec-number">02</span><span class="priority">MORE CLARITY</span></div><h3>Lead with the reader’s payoff</h3><p>Move “Less guessing, more knowing” up front so the value is clear before the backstory.</p><button class="apply-button" data-action="Applied">Apply suggestion <span>→</span></button></article><article class="recommendation muted-card"><div class="rec-head"><span class="rec-number">03</span><span class="priority">EXPERIMENT</span></div><h3>Try a conversation starter</h3><p>Posts that invite a point of view earn 2.4× more replies in your audience’s feed.</p><button class="apply-button" data-action="Saved">Save for later <span>+</span></button></article></div></section>
+        <footer class="page-footer"><span>Signalroom v1.0</span><span>Built for better conversations.</span></footer>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
