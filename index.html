@@ -10,18 +10,20 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="responsive.css" />
+    <link rel="stylesheet" href="loading.css" />
+    <link rel="stylesheet" href="polish.css" />
   </head>
   <body>
     <div class="app-shell">
       <aside class="sidebar">
         <a class="brand" href="#" aria-label="Signalroom home"><span class="brand-mark">S</span><span>signalroom</span></a>
-        <div class="workspace-switcher"><span class="avatar small">AM</span><span><b>Acme Studio</b><small>Personal workspace</small></span><span class="chevron">⌄</span></div>
+        <div class="workspace-switcher"><span class="avatar small">U</span><span><b>Acme Studio</b><small>Personal workspace</small></span><span class="chevron">⌄</span></div>
         <nav class="main-nav" aria-label="Main navigation">
           <a class="nav-item active" href="#analyze"><span class="nav-icon">✦</span>Analyze<span class="nav-count">3</span></a>
           <a class="nav-item" href="#library"><span class="nav-icon">▤</span>Library</a>
           <a class="nav-item" href="#templates"><span class="nav-icon">▧</span>Templates</a>
         </nav>
-        <div class="sidebar-footer"><a class="nav-item" href="#settings"><span class="nav-icon">⚙</span>Settings</a><div class="profile"><span class="avatar">AM</span><span><b>Alex Morgan</b><small>Free plan</small></span><span class="more">•••</span></div></div>
+        <div class="sidebar-footer"><a class="nav-item" href="#settings"><span class="nav-icon">⚙</span>Settings</a><div class="profile"><span class="avatar">U</span><span><b>User</b><small>Free plan</small></span><span class="more">•••</span></div></div>
       </aside>
 
       <main class="main-content" id="analyze">
@@ -34,7 +36,7 @@
             <div class="drop-zone" id="dropZone" tabindex="0" role="button" aria-label="Upload a PDF or image">
               <input id="fileInput" type="file" accept=".pdf,image/*" hidden />
               <div class="upload-visual"><div class="upload-ring"><span>↑</span></div><div class="upload-spark spark-one">+</div><div class="upload-spark spark-two">·</div></div>
-              <h3>Drop a file to start</h3><p>PDF, PNG, JPG, or WEBP <span>·</span> Max 10 MB</p><button class="browse-button" type="button" id="browseButton">Browse files <span>↗</span></button><small class="privacy-note">⌁ Your files stay private and are deleted after analysis.</small>
+              <h3>Drop a file to start</h3><p>PDF, PNG, JPG, or WEBP <span>·</span> Max 10 MB</p><button class="browse-button" type="button" id="browseButton">Browse files <span>↗</span></button><button class="sample-button" type="button" id="sampleButton">Try a sample post <span>✦</span></button><div class="progress-steps" id="progressSteps" aria-live="polite"><span class="active">Upload</span><i>·</i><span>Extract</span><i>·</i><span>Score</span><i>·</i><span>Ready</span></div><small class="privacy-note">⌁ Your files stay private and are deleted after analysis.</small>
             </div>
             <div class="recent-header"><h3>Recent analyses</h3><button class="text-button" id="clearRecent">Clear all</button></div>
             <div class="recent-list" id="recentList">
@@ -49,7 +51,7 @@
               <div class="result-top"><div><span class="analysis-type" id="analysisType">PDF · TEXT EXTRACTED</span><h3 id="resultTitle">Launch caption v3</h3></div><button class="more-button" aria-label="More options">•••</button></div>
               <div class="score-row"><div class="score-ring"><strong id="scoreValue">84</strong><span>/100</span></div><div class="score-copy"><b>Strong foundation</b><p>Your voice is clear and the hook lands. A sharper close could help more people take the next step.</p></div></div>
               <div class="metric-grid"><div class="metric"><span>HOOK</span><b>92</b><div class="metric-bar"><i style="width:92%"></i></div></div><div class="metric"><span>CLARITY</span><b>88</b><div class="metric-bar"><i style="width:88%"></i></div></div><div class="metric"><span>CTA</span><b>61</b><div class="metric-bar warm"><i style="width:61%"></i></div></div></div>
-              <div class="extracted-block"><div class="block-heading"><span>EXTRACTED TEXT</span><button class="copy-button" id="copyText">Copy text</button></div><p id="extractedText">We spent six months building the thing we wished existed. Today, Signalroom is live. Less guessing, more knowing. Tell us what you think ↓</p></div>
+              <div class="extracted-block"><div class="block-heading"><span>EXTRACTED TEXT</span><button class="copy-button" id="copyText">Copy text</button></div><div class="content-summary" id="contentSummary"><span><b id="wordCount">25</b> words</span><span><b id="readingTime">8</b> sec read</span><span><b id="hashtagCount">0</b> hashtags</span></div><img class="uploaded-preview" id="uploadedPreview" alt="Uploaded image preview" hidden /><p id="extractedText">We spent six months building the thing we wished existed. Today, Signalroom is live. Less guessing, more knowing. Tell us what you think ↓</p></div>
             </div>
           </div>
         </section>

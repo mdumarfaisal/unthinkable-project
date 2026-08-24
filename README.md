@@ -1,20 +1,37 @@
 # Signalroom
 
-Signalroom is a focused frontend prototype for the Social Media Content Analyzer assessment. It gives creators a calm upload-to-insight workflow: drag in a PDF or image, see validation and extraction progress, review the extracted text, and apply engagement recommendations.
+Signalroom is a focused full-stack app for the Social Media Content Analyzer assessment. It gives creators a calm upload-to-insight workflow: drag in a PDF or image, run real text extraction or OCR, review the extracted text, and apply engagement recommendations.
 
 ## Approach
 
-The interface is built as a dependency-free static app so it can be run immediately in a browser. PDF uploads simulate text extraction and image uploads simulate OCR, with both paths sharing validation, loading, completion, and recent-analysis states. The analysis panel presents a simple score model across hook, clarity, and CTA, while recommendations can be applied or saved. In production, `analyzeFile` in `app.js` is the integration point for a PDF parser and OCR service; the current UI contract keeps that backend swap small. The layout is responsive, keyboard-accessible for the drop area, and includes basic size/type errors plus private-file messaging.
+The Flask API receives files in memory, uses `pypdf` to preserve page-separated PDF text, and uses Pillow plus Tesseract for scanned images. A small deterministic scoring layer evaluates the extracted post for hook, clarity, and call-to-action signals, then returns recommendations to the browser. Files are never written to disk. The responsive frontend shares validation, loading, completion, and error states, supports keyboard activation for the drop area, renders API recommendations into the insight cards, and previews uploaded images beside their OCR text.
 
 ## Run locally
 
-Python 3 is the only prerequisite:
+Create the environment and install dependencies:
 
 ```powershell
-python -m http.server 4173
+python -m venv .venv
+.venv\\Scripts\\python.exe -m pip install -r requirements.txt
 ```
 
-Open http://localhost:4173.
+Install the native Tesseract executable and add it to `PATH`, then start the single application server:
+
+```powershell
+.venv\\Scripts\\python.exe backend.py
+```
+
+Open http://127.0.0.1:5000. The backend automatically detects the standard Windows Tesseract install path. PDF extraction works with the Python dependencies alone.
+
+Run the backend tests:
+
+```powershell
+.venv\\Scripts\\python.exe -m unittest discover -s tests -v
+```
+
+## Deploy
+
+Deploy this repository to Render using the included `render.yaml` and `Dockerfile`. The Docker image installs Tesseract automatically, and Render uses `/health` to check service availability. For another Python host, the included `Procfile` starts `gunicorn backend:app`; install Tesseract on the host image for image OCR support.
 
 ## Supported files
 
